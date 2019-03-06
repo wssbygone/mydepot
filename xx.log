@@ -1,0 +1,17 @@
+/etc/rc.d/init.d/arangodb3:# arangod        Startup script for the ArangoDB Server
+/etc/rc.d/init.d/arangodb3:# processname: arangod
+/etc/rc.d/init.d/arangodb3:# config: /etc/arangodb3/arangod.conf
+/etc/rc.d/init.d/arangodb3:. /usr/share/arangodb3/arangodb-helper
+/etc/rc.d/init.d/arangodb3:ARANGO_BIN=/usr/sbin/arangod
+/etc/rc.d/init.d/arangodb3:ARANGO_SYSCONFIG=/etc/arangodb3/arangod.conf
+/etc/rc.d/init.d/arangodb3:pidfile=/var/run/arangodb/arangod.pid
+/etc/rc.d/init.d/arangodb3:  ( cd /var/lib/arangodb3 && chown -R arangodb:arangodb . && chmod 700 .) || ar_ferr "failed to set permissions on /var/lib/arangodb3"
+/etc/rc.d/init.d/arangodb3:  ( cd /var/lib/arangodb3-apps && chown -R arangodb:arangodb . && chmod 700 .) || ar_ferr "failed to set permissions on /var/lib/arangodb3-apps"
+/etc/rc.d/init.d/arangodb3:  ( cd $PIDDIR && chown arangodb:arangodb . && chmod 700 .) || ar_ferr "failed to set permissions on $PIDDIR"
+/etc/rc.d/init.d/arangodb3:  local current=/var/tmp/arangod
+/etc/rc.d/init.d/arangodb3:  ( mkdir -p $current && chown -R arangodb:arangodb $current ) || { echo "could not create or set permissions for $current"; exit 1; }
+/etc/rc.d/init.d/arangodb3:          $ARANGO_BIN --uid arangodb --gid arangodb --server.rest-server false --database.auto-upgrade true $@
+/etc/rc.d/init.d/arangodb3:          $ARANGO_BIN --uid arangodb --gid arangodb --server.rest-server false --log.foreground-tty false --database.check-version
+/etc/rc.d/init.d/arangodb3:              $ARANGO_BIN --uid arangodb --gid arangodb --log.foreground-tty false --pid-file "$pidfile" --temp.path "/var/tmp/arangod"  --supervisor $@
+/etc/rc.d/init.d/arangodb3:  ar_ferr "could not kill arangod" $RETVAL
+/etc/arangodb3/arango-init-database.conf:@include arangod

@@ -1,0 +1,33 @@
+#1981= IFCPROPERTYSINGLEVALUE('\u5C3A\u5BF8\X0\',$,IFCTEXT('1200X800'),$);
+#2093= IFCPROPERTYSINGLEVALUE('\X2\5C3A5BF8\X0\',$,IFCTEXT('1200X800'),$);
+#2189= IFCPROPERTYSINGLEVALUE('\X2\5C3A5BF8\X0\',$,IFCTEXT('1200X800'),$);
+#2284= IFCPROPERTYSINGLEVALUE('\X2\5C3A5BF8\X0\',$,IFCTEXT('1050X800'),$);
+#2380= IFCPROPERTYSINGLEVALUE('\X2\5C3A5BF8\X0\',$,IFCTEXT('800X800'),$);
+
+跌狐仙
+third
+#94= IFCPROJECT('0IbWAlAfX8Yev_i80btupC',#41,'\X2\987976EE7F1653F7\X0\',$,$,'\X2\987976EE540D79F0\X0\','\X2\987976EE72B66001\X0\',(#83,#91),#78);
+第5个
+
+
+#encoding=utf-8
+from sys import argv
+script, filename = argv
+txt = open(filename)
+print "Here's your file %r:" % filename
+print txt.read()
+
+
+
+#encoding=utf-8
+print "xxx"
+with open('test.txt','r') as f:
+	contents = f.read()
+	print contents
+	print '------------'
+	print  contents.rstrip()
+	
+	
+f=file("test.txt","r")
+print f.readline()
+f.close	
