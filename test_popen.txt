@@ -1,0 +1,19 @@
+总用量 2100
+-rwxr-xr-x. 1 root root  31176 3月  26 14:35 a.out
+drwxr-xr-x. 2 root root     80 3月  26 14:35 c++11
+-rwxr-xr-x. 1 root root  25072 4月   8 16:28 cppCallShell
+-rwxr--r--. 1 root root    686 4月   8 16:28 cppCallShell.cpp
+-rwxr-xr-x. 1 root root   1617 3月  26 14:35 createDir.cpp
+-rwxr-xr-x. 1 root root   1989 3月  26 14:35 cube.obj
+drwxr-xr-x. 2 root root     76 4月   3 18:38 exec
+-rwxr-xr-x. 1 root root    546 3月  26 14:35 file.cpp
+-rw-r--r--. 1 root root     28 3月  26 14:35 file.txt
+-rw-r--r--. 1 root root 265515 3月  26 14:35 geo_nor.txt
+-rw-r--r--. 1 root root 290224 3月  26 14:35 geo_nor.xml
+drwxr-xr-x. 2 root root     30 4月   3 18:59 getPath
+-rwxr-xr-x. 1 root root   1773 3月  26 14:35 ifstream.cpp
+-rwxr-xr-x. 1 root root  49888 4月   8 15:38 isUnicode
+-rwxr--r--. 1 root root    920 4月   8 15:38 isUnicode(无用).cpp
+-rwxr-xr-x. 1 root root    663 3月  26 14:35 iterator.cpp
+-rwxr-xr-x. 1 root root    300 3月  26 14:35 lambda.cpp
+-rw-r--r--. 1 root root  82533 3月  2
