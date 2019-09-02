@@ -1,0 +1,6 @@
+﻿  stdafx.cpp
+  temp.cpp
+c:\users\shi_s\desktop\c++sqlitedemo\temp\temp\temp.cpp(23): warning C4244: “初始化”: 从“std::streamoff”转换到“unsigned int”，可能丢失数据
+c:\users\shi_s\desktop\c++sqlitedemo\temp\temp\temp.cpp(41): warning C4244: “参数”: 从“std::streamoff”转换到“int”，可能丢失数据
+c:\users\shi_s\desktop\c++sqlitedemo\temp\temp\temp.cpp(55): warning C4715: “InsertFile”: 不是所有的控件路径都返回值
+  temp.vcxproj -> C:\Users\shi_s\Desktop\C++SQLiteDemo\temp\Debug\temp.exe
