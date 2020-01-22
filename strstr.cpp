@@ -5,6 +5,10 @@ using namespace std;
 int main()
 {
     char arr[]="Ambient";
-    std::cout<<strstr(arr,"mbi")<<std::endl;
+    std::cout<<strstr(arr,"mxbi")<<std::endl;
+	if( nullptr == strstr(arr,"mxbi"))
+	{
+		std::cout<<"no match"<<std::endl;
+	}
     return 0;
 }

@@ -14,7 +14,7 @@ const char* img = "img.png";
 const char* proName = "M1543196989607";
 const char* path = "/data/data/cc.xx.yy/3.glb";
 const char* type = "binary";
-std::vector<const char*> proj{"xingglb","M1543196989607","villa_0.001","tujian_0.001","t6"};
+std::vector<const char*> proj{"xingglb","villa_0.001","tujian_0.001","t6","M1543196989607"};
  
 int getFileLength(const char* filename)
 {
@@ -176,7 +176,7 @@ int sqlite3_db_create(const char* ofDB, const char* proName)
         return -1;
     }
 				 
-	sprintf(sql, "CREATE TABLE IF NOT EXISTS `%s` ("\
+	sprintf(sql, "PRAGMA auto_vacuum = FULL; CREATE TABLE IF NOT EXISTS `%s` ("\
                  "path TEXT PRIMARY KEY NOT NULL,type TEXT, data blob"\
 				 ",date timestamp NOT NULL default (datetime('now','localtime')))", proName);				 
 				 //"constraint pk_t2 PRIMARY KEY (path,data) )", proName);	 
@@ -308,7 +308,8 @@ int sqlite3_db_del(const char* ofDB, const char* proName="t6" )
         //////////////////
 		
 		memset(sql,0,1024);
-        sprintf(sql, "DROP TABLE IF EXISTS `%s`;VACUUM  `%s`;" ,tblName,tblName);
+        //sprintf(sql, "DROP TABLE IF EXISTS `%s`;VACUUM  `%s`;" ,tblName,tblName);
+		sprintf(sql, "DROP TABLE IF EXISTS `%s`;", tblName);
         printf("sql: \"%s\"\n", sql);
 	
 		ret = sqlite3_exec(db, sql, NULL, NULL, &zErrMsg);

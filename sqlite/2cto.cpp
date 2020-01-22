@@ -20,7 +20,7 @@ int sqlite3_db_blob_insert()
     sqlite3_stmt *stmt = NULL;
     char sql[1024]={0};
     int ret = 0;
-    struct employee_s emp = {1, "tom", "programmer", 1035};
+    struct employee_s emp = {3, "john", "teacher", 188};
 	do
 	{
 		ret = sqlite3_open(DEMO_DB, &db);
@@ -43,7 +43,7 @@ int sqlite3_db_blob_insert()
 		}
 	 
 		/* 绑定id值 */
-		ret = sqlite3_bind_int(stmt, 1, 1001);
+		ret = sqlite3_bind_int(stmt, 1, 1005);
 		if (ret != SQLITE_OK) {
 			fprintf(stderr, "db bind fail, errcode[%d], errmsg[%s]\n", ret, sqlite3_errmsg(db));
 			sqlite3_close(db);
@@ -215,8 +215,8 @@ int sqlite3_db_create()
  
 int main()
 {
-    sqlite3_db_create();
-    sqlite3_db_blob_insert();
+    //sqlite3_db_create();
+    //sqlite3_db_blob_insert();
     sqlite3_db_blob_select();
     return 0;
 }
