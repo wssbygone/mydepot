@@ -10,11 +10,11 @@
 using namespace std;
  
 const char* ofDB = "of.db";
-const char* img = "img.png";
+const char* img = "1/0/0.b3dm";
 const char* proName = "M1543196989607";
-const char* path = "/data/data/cc.xx.yy/3.glb";
+const char* path = "1/0/0.b3dm"; //"/data/data/cc.xx.yy/3.glb";
 const char* type = "binary";
-std::vector<const char*> proj{"xingglb","villa_0.001","tujian_0.001","t6","M1543196989607"};
+std::vector<const char*> proj{"sample2"}; //,"villa_0.001","tujian_0.001","xingglb","M1543196989607"};
  
 int getFileLength(const char* filename)
 {
@@ -55,7 +55,7 @@ int sqlite3_db_blob_insert(const char* ofDB, const char* img, const char* proNam
 			break;
 		}
 	 
-		sprintf(sql, "insert or replace into `%s` values(?, ?, ?,?)", proName);
+		sprintf(sql, "insert or replace into `%s` values(?, ?, ?, ?,?)", proName);
 		printf("sql insert: \"%s\" \"%s\"\n", sql,path);
 		ret = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
 		if (ret != SQLITE_OK) {
@@ -83,8 +83,17 @@ int sqlite3_db_blob_insert(const char* ofDB, const char* img, const char* proNam
 			break;
 		}		
 	 
+	    /*
+		ret = sqlite3_bind_text(stmt, 4, "", strlen(""), NULL);
+		if (ret != SQLITE_OK) {
+			fprintf(stderr, "3 db bind fail, errcode[%d], errmsg[%s]\n", ret, sqlite3_errmsg(db));
+			//sqlite3_close(db);
+			ret = -1;
+			break;
+		}	 */
+	 
 		/* 绑定data值 */
-		ret = sqlite3_bind_blob(stmt, 3, buffer, size, NULL);
+		ret = sqlite3_bind_blob(stmt, 5, buffer, size, NULL);
 		if (ret != SQLITE_OK) {
 			fprintf(stderr, "2 db bind fail, errcode[%d], errmsg[%s]\n", ret, sqlite3_errmsg(db));
 			//sqlite3_close(db);
@@ -176,10 +185,19 @@ int sqlite3_db_create(const char* ofDB, const char* proName)
         return -1;
     }
 				 
-	sprintf(sql, "PRAGMA auto_vacuum = FULL; CREATE TABLE IF NOT EXISTS `%s` ("\
+	/*sprintf(sql, "PRAGMA auto_vacuum = FULL; CREATE TABLE IF NOT EXISTS `%s` ("\
                  "path TEXT PRIMARY KEY NOT NULL,type TEXT, data blob"\
-				 ",date timestamp NOT NULL default (datetime('now','localtime')))", proName);				 
-				 //"constraint pk_t2 PRIMARY KEY (path,data) )", proName);	 
+				 ",date timestamp NOT NULL default (datetime('now','localtime')))", proName);	*/			 
+				 //"constraint pk_t2 PRIMARY KEY (path,data) )", proName);
+				 
+	sprintf(sql, "PRAGMA auto_vacuum = FULL; CREATE TABLE IF NOT EXISTS `%s` ("\
+		"path TEXT(64) PRIMARY KEY NOT NULL"\
+		",type TEXT(16) NOT NULL"\
+		",date TIMESTAMP NOT NULL DEFAULT (datetime('now','localtime'))"\
+		",note TEXT"\
+		",data BLOB"\
+		")", proName);				 
+				 
  
     printf("sql create: \"%s\"\n", sql);
     ret = sqlite3_exec(db, sql, NULL, NULL, &errmsg);
@@ -339,10 +357,11 @@ int main()
 
 		ret=sqlite3_db_create(ofDB, proj[i]);
 		std::cout<<__LINE__<<" ret:"<<ret<<"\n"<<std::endl;	
-		for(int j=0;j<10;j++)
+		for(int j=0;j<1;j++)
 		{   
 			stringstream ss;
-			ss<<path<<j;
+			//ss<<path<<j;
+			ss<<path;
 			ret=sqlite3_db_blob_insert(ofDB, img, proj[i], ss.str().c_str());			
 		}
 		std::cout<<__LINE__<<" ret:"<<ret << "\n"<<std::endl; 
