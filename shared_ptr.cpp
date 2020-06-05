@@ -4,6 +4,7 @@
 #include<iostream>
 #include<string>
 #include <memory>
+#include <vector>
 using namespace std;
 
 class CB;
@@ -28,18 +29,42 @@ public:
 	CB(){} 
 	~CB(){std::cout<<"~CB()"<<std::endl;}
 
-	void Register(const std::shared_ptr<CA>& sp)
+	void Register(const std::weak_ptr<CA>& sp)
 	{
 		m_sp = sp;
 	}
 
 private:
-	std::shared_ptr<CA> m_sp;
+	std::weak_ptr<CA> m_sp;
+};
+
+class AA
+{
+public:
+	AA(){}
+	~AA() {std::cout<<"destruct data:"<< data <<std::endl;}
+
+//private:
+	int data = 1;
 };
 
 
+class A
+{
+public:
+    A(){cout << "constructor" << endl;};
+    ~A(){cout << "destructor"  << endl;};
+};
+
+
+void fun(AA* pdata)
+{
+	pdata->data = 2;
+}
+
 int main(int argc, char* argv[])
 {	
+/*  导致内存泄露的用法   
 	std::shared_ptr<CA> spa(new CA);
 	std::shared_ptr<CB> spb(new CB);
 
@@ -47,6 +72,22 @@ int main(int argc, char* argv[])
 	spa->Register(spb);
 	printf("%d\n", spb.use_count()); // 2
 	printf("%d\n", spa.use_count()); // 2	
+	
+	// 测试用get()取出sp指针托管的普通指针
+	std::shared_ptr<AA> spAA = std::make_shared<AA>();
+	std::cout<<"\n\n\ndata="<< spAA->data <<std::endl;
+	fun(spAA.get());	
+	std::cout<<"data="<< spAA->data <<std::endl;  */
+	
+    shared_ptr<A> sharedptr (new A);
+    std::vector<shared_ptr<A> > test;
+    test.push_back(sharedptr);
+	
+	cout<< "before: "<<sharedptr.use_count()<<endl;
+    test.clear();
+	cout<<"after: " <<sharedptr.use_count()<<endl;	
+	
+    cout << "I am here" << endl;
 	
 	return 0;
 } 

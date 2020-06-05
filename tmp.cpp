@@ -1,10 +1,13 @@
 #include <iostream>
 #include <string>
+#include <cstring>
 #include <sstream>
 #include <map>
 #include <vector>
 #include <typeinfo>
 using namespace std;
+const char* version = "3.2.2";
+#define version "3.2.2"
 
 std::vector<std::string> split(std::string s,char token)
 {
@@ -19,9 +22,23 @@ std::vector<std::string> split(std::string s,char token)
     return std::move(vs);
 }
 
-int main()
+int main (int argc, char* argv[])
 {
+	if (argc <= 1)	{
+		printf("No command specified\n");
+		return 0;
+	}	
 	
+	if ( ( 2 == argc )
+		  && ( !strcmp(argv[1], "version") 
+		  || !strcmp(argv[1], "-v")
+	      || !strcmp(argv[1], "--version") )
+	    )		 
+	{
+		cout<<"objParser version: v"<<version<<endl;
+	}		
+
+#if 0		
 	//split("it,is,a,world",'.');
 	string str = "he is@ a@ good boy";
 	cout<<str<<endl;
@@ -34,9 +51,7 @@ int main()
 	str=str.replace(it,std::string("he is@ a@ good boy").size(),"");
 	if(str.empty())
 		cout<<"["<<str<<"]"<<endl; 
-	
-	
-#if 0	
+
     string a="abcdefghigklmn";
     string b="abc";
     string c="123";
