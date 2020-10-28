@@ -1,3 +1,5 @@
+//https://www.csdn.net/gather_20/NtDacgzsOTMtYmxvZwO0O0OO0O0O.html
+
 #include <thread>
 #include <iostream>
 #include <fstream>
@@ -55,7 +57,7 @@ void test_join(const string& file_path)
 
 int main()
 {
-    string file_path = "./1.txt";
+    string file_path = "./multiThread.txt";
     test_detach(file_path);
     std::this_thread::sleep_for(std::chrono::seconds(1));  // wait for detached threads done
 	std::cout<<"\n \n" <<std::endl;

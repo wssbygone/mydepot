@@ -1,10 +1,17 @@
-#!/usr/bin/python
-#encoding=utf-8
+#python -m json.tool 1F.json > 1FStyled.json
+import json
+import sys
 
-str1 = '\u4f60\u597d'  
-print str1.decode('unicode_escape')  
+reload(sys)
+sys.setdefaultencoding( "utf-8" )
 
-#encoding=utf-8
-f=file("test.txt","r")
-print f.readline().decode('unicode_escape')  
-f.close
+file = open("house.json")
+
+for line in file:
+        print(json.dumps(line.decode('unicode_escape'),ensure_ascii=False))
+file.close()
+
+
+#sed -i  's/\\n\"//g' 1Fout.json
+#sed -i 's/\\\"/\"/g'  1Fout.json
+#sed -i 's/^\"//g' 1Fout.good.jso

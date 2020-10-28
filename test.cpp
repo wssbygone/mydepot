@@ -1,19 +1,31 @@
-#include <iostream>
-#include <string> // std::to_string
-#include <sstream> // std::stringstream
+// 仿函数的使用 functor
 
-int main()
-{
-	// old method
-	std::stringstream ss;
-	ss << 1.23;
-	std::string str = ss.str();
-	std::cout << str << std::endl;
-	// new method
-	std::string pi = "pi is " + std::to_string(3.1415926);
-	std::string perfect = std::to_string(1 + 2 + 4 + 7 + 14) + " is a perfect number";
-	std::cout << pi << std::endl;
-	std::cout << perfect << std::endl;
-
+#include <bits/stdc++.h>
+ 
+using namespace std;
+ 
+map<int,int> MMP;
+ 
+struct CmpByValue {  
+  bool operator()(const pair<int,int>& lhs, const pair<int,int>& rhs)const {  
+    return lhs.second < rhs.second;  
+  }  
+};
+ 
+int main(){
+	
+	MMP.insert(make_pair(1,4));
+	MMP.insert(make_pair(2,3));
+	MMP.insert(make_pair(3,2));
+	MMP.insert(make_pair(4,1));
+	
+	vector< pair<int,int> > V(MMP.begin(),MMP.end());
+	
+	sort(V.begin(),V.end(),CmpByValue());
+	
+	for(int i=0 ; i<V.size() ; ++i){
+		printf("%d\n",V[i].second);
+	}
+	
 	return 0;
 }
