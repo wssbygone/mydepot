@@ -6,11 +6,13 @@ static int CommShm(int size, int flags) {
     perror("ftok");
     return -1;
   }
+  printf("key=%d\n", key) ;
   int shmid = 0;
   if ((shmid = shmget(key, size, flags)) < 0) {
     perror("shmget");
     return -2;
   }
+  printf("shmid=%d\n", shmid);
   return shmid;
 }
 
