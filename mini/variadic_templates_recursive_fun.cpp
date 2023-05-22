@@ -18,19 +18,22 @@ struct sum<>
 #endif
 
  
-template<typename... Args>
-struct Sum;
- 
+template<typename... Args> struct Sum;
+
+template<typename Last>
+struct Sum<Last> : std::integral_constant<int, sizeof(Last)>
+{
+}; 
  
 template<typename First, typename... Rest>
 struct Sum<First, Rest...> : std::integral_constant<int, Sum<First>::value + Sum<Rest...>::value>
 {
 };
  
-template<typename Last>
+/*template<typename Last>
 struct Sum<Last> : std::integral_constant<int, sizeof(Last)>
 {
-};
+};*/
 
 //Sum<int,double,short>::value; 
 

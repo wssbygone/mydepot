@@ -1,5 +1,5 @@
 [genrule(
-    name = "count_lines_" + f,  # strip ".cc"
+    name = "count_lines_" + f[:-3],  # strip ".cc"
     srcs = [f],
     outs = ["%s-linecount.txt" % f],
     #cmd = "wc -l $< >$@",

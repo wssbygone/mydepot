@@ -1,8 +1,7 @@
 #include <iostream>
 using namespace std;
 
-template<int...>
-struct IndexSeq{};
+template<int...> struct IndexSeq{};
  
 
 template<int N, int... Indexes>

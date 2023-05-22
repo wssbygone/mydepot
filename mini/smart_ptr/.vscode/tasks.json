@@ -1,0 +1,65 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "build release", //任务名
+			"type": "shell", // 类型
+			"command": "cd build && cmake .. -DCMAKE_BUILD_TYPE=Release && make", // 命令
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build", // 组别
+				"isDefault": true // 是否为默认，默认时直接快捷监Crtl+Shift+b进行编译
+			},
+			"options": {
+				"cwd": "${workspaceFolder}" // 命令执行目录，可以为相对路径
+			}
+		},
+		{
+			"label": "build debug", //任务名
+			"type": "shell", // 类型
+			"command": "cd build && cmake .. -DCMAKE_BUILD_TYPE=Debug && make", // 命令
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build", // 组别
+				"isDefault": true // 是否为默认，默认时直接快捷监Crtl+Shift+b进行编译
+			},
+			"options": {
+				"cwd": "${workspaceFolder}" // 命令执行目录，可以为相对路径
+			}
+		},
+		{
+			"label": "test", //任务名
+			"type": "shell", // 类型
+			"command": "./build/example", // 命令
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "test", // 组别
+				"isDefault": true // 是否为默认，默认时直接快捷监Crtl+Shift+b进行编译
+			},
+			"options": {
+				"cwd": "${workspaceFolder}" // 命令执行目录，可以为相对路径
+			}
+		},
+		{
+			"label": "gtest", //任务名
+			"type": "shell", // 类型
+			"command": "./build/test/test_example", // 命令
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "test", // 组别
+				"isDefault": true // 是否为默认，默认时直接快捷监Crtl+Shift+b进行编译
+			},
+			"options": {
+				"cwd": "${workspaceFolder}" // 命令执行目录，可以为相对路径
+			}
+		}
+	],
+}

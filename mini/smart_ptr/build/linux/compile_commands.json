@@ -1,0 +1,17 @@
+[
+{
+  "directory": "/home/wss/aiplorer/aipilot/modules/smart_ptr/build/linux",
+  "command": "/usr/bin/c++ -Dexample_core_EXPORTS -I/home/wss/aiplorer/third_party/linux94/glog_0.3.5-rc.5/include -I/home/wss/aiplorer/third_party/linux94/gflags_2.2.2/include -I/home/wss/aiplorer/third_party/linux94/gtest_1.8.1/include -I/home/wss/aiplorer/aipilot/modules/smart_ptr/. -g -fPIC -std=gnu++17 -o CMakeFiles/example_core.dir/src/test.cpp.o -c /home/wss/aiplorer/aipilot/modules/smart_ptr/src/test.cpp",
+  "file": "/home/wss/aiplorer/aipilot/modules/smart_ptr/src/test.cpp"
+},
+{
+  "directory": "/home/wss/aiplorer/aipilot/modules/smart_ptr/build/linux",
+  "command": "/usr/bin/c++  -I/home/wss/aiplorer/third_party/linux94/glog_0.3.5-rc.5/include -I/home/wss/aiplorer/third_party/linux94/gflags_2.2.2/include -I/home/wss/aiplorer/third_party/linux94/gtest_1.8.1/include -I/home/wss/aiplorer/aipilot/modules/smart_ptr/. -g -std=gnu++17 -o CMakeFiles/example.dir/main.cpp.o -c /home/wss/aiplorer/aipilot/modules/smart_ptr/main.cpp",
+  "file": "/home/wss/aiplorer/aipilot/modules/smart_ptr/main.cpp"
+},
+{
+  "directory": "/home/wss/aiplorer/aipilot/modules/smart_ptr/build/linux/test",
+  "command": "/usr/bin/c++  -I/home/wss/aiplorer/third_party/linux94/glog_0.3.5-rc.5/include -I/home/wss/aiplorer/third_party/linux94/gflags_2.2.2/include -I/home/wss/aiplorer/third_party/linux94/gtest_1.8.1/include -I/home/wss/aiplorer/aipilot/modules/smart_ptr/. -I/home/wss/aiplorer/aipilot/modules/smart_ptr/test/include -g -std=gnu++17 -o CMakeFiles/test_example.dir/test_example.cpp.o -c /home/wss/aiplorer/aipilot/modules/smart_ptr/test/test_example.cpp",
+  "file": "/home/wss/aiplorer/aipilot/modules/smart_ptr/test/test_example.cpp"
+}
+]
