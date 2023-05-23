@@ -2,6 +2,7 @@
 若不对不同类型可调用对象进行包装，对于返回值，参数列表相同的函数指针，仿函数，lambda表达式。
 这个函数模板将实例化出很多份。而如果将不同类型可调用对象用function包装起来，
 则这个函数模板将只针对function类型实例化出一份。
+https://blog.csdn.net/i777777777777777/article/details/128066607
 */
 #include <iostream>
 #include <memory>
