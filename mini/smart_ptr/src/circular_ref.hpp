@@ -14,12 +14,12 @@ class Checken {
  public:
   std::weak_ptr<Egg> p_egg_;
   // std::shared_ptr<Egg> p_egg_;
-  ~Checken() { LOG(INFO) << "destructor checken func"; }
+  ~Checken() { LOG(INFO) << "destructor chicken func"; }
 };
 class Egg {
  public:
   // std::weak_ptr<A> pa;
-  std::shared_ptr<Checken> p_checken_;
+  std::shared_ptr<Checken> p_chicken_;
   ~Egg() { LOG(INFO) << "destructor egg func"; }
 };
 
