@@ -1,6 +1,7 @@
 #include <iostream>
 #include <set>
 using namespace std;
+
 struct song
 {
   int id;
@@ -12,8 +13,8 @@ struct song
   bool operator<(const song& right) const;
 };
 
- bool song::operator<(const song& right) const
- {
+bool song::operator<(const song& right) const
+{
    if (id == right.id)     //根据id去重
       return false;
    else
