@@ -1,52 +1,27 @@
 #include <iostream>
-#include <set>
 using namespace std;
 
-struct song
+struct Normal
 {
-  int id;
-  int hot;
-  song(int id, int hot)
-   : id{id}
-   , hot{hot}
-   {}
-  bool operator<(const song& right) const;
+  Normal() {cout<<"ctor"<<endl;}
+
+  Normal(const Normal &) {cout<<"copy"<<endl;}
+
+// Normal(Normal &&) {cout<<"&&"<<endl;}
+  Normal(Normal &&) = delete ;
 };
 
-bool song::operator<(const song& right) const
-{
-   if (id == right.id)     //根据id去重
-      return false;
-   else
-   {
-     if (hot != right.hot)
-     {
-        return hot > right.hot;      //降序
-     }
-     else
-     {
-        return id > right.id;
-     }
-   }
- }
 
 int main()
 {
-  std::set<song> mySet;
-  song s1(20, 100);
-  song s2(20, 200);
-  song s3(10, 300);
-  song s4(30, 400);
- 
-  mySet.insert(s1);    //插入s1
-  mySet.insert(s2);    //插入s2
-  mySet.insert(s3);    //s3和s2的id相同，不插入
-  mySet.insert(s4);    //插入s4
- 
-  for (auto it : mySet)
-  {
-    std::cout << "id:" << it.id << ",hot:" << it.hot << std::endl;
-  }
- 	
+  cout<<"1======================="<<endl;
+  Normal n(Normal());
+  cout<<"2======================="<<endl;
+  int a = 1;
+  const int x = a;  // x is a copy of a
+  const int &b = x;  // b is a reference to x, not a
+  a=2;
+  std::cout<<b<<std::endl;
+  
   return 0;
-}
+} 

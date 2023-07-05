@@ -22,7 +22,7 @@ class Caffe {
 
  private:
   static std::once_flag once_flag_;
-  static std::shared_ptr<Caffe> singleton_; // it's OK to use std::unique_ptr,more fast
+  static std::shared_ptr<Caffe> singleton_; // it's OK to use std::unique_ptr, more fast
   // The private constructor to avoid duplicate instantiation.
   Caffe() {}
 
