@@ -1,27 +1,18 @@
 #include <iostream>
+#include <fstream>
+#include <vector>
+#include <functional>
+
 using namespace std;
 
-struct Normal
-{
-  Normal() {cout<<"ctor"<<endl;}
+int main() {
+  std::vector<std::ofstream> files;
+  files.push_back(std::ofstream("f1.txt"));
+  std::ofstream file("f2.txt");
+  files.push_back(std::move(file));
+   
+  files[0]<<"12345"<<std::endl;
+  files[1]<<"23456"<<std::endl;
 
-  Normal(const Normal &) {cout<<"copy"<<endl;}
-
-// Normal(Normal &&) {cout<<"&&"<<endl;}
-  Normal(Normal &&) = delete ;
-};
-
-
-int main()
-{
-  cout<<"1======================="<<endl;
-  Normal n(Normal());
-  cout<<"2======================="<<endl;
-  int a = 1;
-  const int x = a;  // x is a copy of a
-  const int &b = x;  // b is a reference to x, not a
-  a=2;
-  std::cout<<b<<std::endl;
-  
   return 0;
 } 
