@@ -1,24 +1,25 @@
-#include <fstream>
-#include <bitset>
 #include <iostream>
 #include <string>
 #include <typeinfo>
-#include <cstdio>
-struct SS {
-  SS(int a=98):a_(a) { }
-  int a_;
-};
+#include <stdio.h>
+#include <vector>
 
-int main () {
-  SS *s;
-  decltype(s) pB;
-  pB=nullptr;
-  std::cout<<typeid(pB).name()<<std::endl;    
-  decltype(s) pC=new SS(77);
-  std::cout<<pC->a_<<std::endl;    
+#ifdef _cplusplus
+extern "C"{
+#endif
+void* memset(void*, int, size_t);
+#ifdef _cplusplus
+}
+#endif
 
-  const std::string &topicName="abcd";
-  std::cout<<topicName<<std::endl;
+
+
+int main()
+{
+  char* arr= (char*)malloc(20);
+  memset(arr,0,20);
+  
+  
+  free(arr);
   return 0;
 }
- 
