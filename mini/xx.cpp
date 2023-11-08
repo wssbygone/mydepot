@@ -23,17 +23,22 @@ int add(int a, int b)
 }
 
 int main(int argc, char *argv[]) {
-  //Bar bar;
-  //auto f = std::bind(&Bar::foo,&bar,1, 2, 3);
-  //f(); // 调用foo函数
-  int n=8;
-//  std::cout<<argc <<"\t"<< argv[1]<<std::endl;
-  std::function<int(int)> f = std::bind(add, std::ref(n),std::placeholders::_1);
-  n=10;
-  std::cout <<f(12) << std::endl; // 调用add函数
-  // std::cout << typeid(argv[1]).name() <<std::endl;
- 
-  std::cout<<"========== "<< sizeof(std::string) <<" ========="<<std::endl; 
+  //int n=8;
+  //std::function<int(int)> f = std::bind(add, std::ref(n),std::placeholders::_1);
+  //n=10;
+  //std::cout <<f(12) << std::endl; // 调用add函数
+  //std::cout<<"========== "<< sizeof(std::string) <<" ========="<<std::endl; 
   
+  std::vector<int> vec;
+  static int count=0;
+  std::cout<<vec.size()<<" "<<(count=vec.capacity())<<std::endl;
+  
+  for(int i=0;i<100;i++)
+  {
+    vec.push_back(i);
+    if(count!=vec.capacity())
+      std::cout<<vec.size()<<" "<<(count=vec.capacity())<<std::endl;
+  }
+   
   return 0;
 }
