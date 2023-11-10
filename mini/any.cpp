@@ -31,7 +31,6 @@ else if(a2.type() == typeid(std::string))
     std::cout << "a2存储的值是std::string类型" << std::endl;
 }
 
-
   return 0;
 }
  
