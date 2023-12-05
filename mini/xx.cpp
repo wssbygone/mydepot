@@ -39,6 +39,8 @@ int main(int argc, char *argv[]) {
     if(count!=vec.capacity())
       std::cout<<vec.size()<<" "<<(count=vec.capacity())<<std::endl;
   }
-   
+
+  int i=0; const int& j=i; i=20;
+  std::cout<<j<<std::endl; 
   return 0;
 }

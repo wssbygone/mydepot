@@ -6,6 +6,7 @@
 #include <cstdio>
 #include <type_traits>
 #include <utility>
+#include <any>
 
 int main () {
 // 构造函数
@@ -26,7 +27,8 @@ if(a1.type() == typeid(int))
 {
     std::cout << "a1存储的值是int类型" << std::endl;
 }
-else if(a2.type() == typeid(std::string))
+
+if(a2.type() == typeid(std::string))
 {
     std::cout << "a2存储的值是std::string类型" << std::endl;
 }
