@@ -1,39 +1,29 @@
-#include<iostream>
+#include <iostream>
+#include <thread>
 
-struct A
-{
-  int a;
-  std::string s;
-};
-
-class B
-{
-public:
-  explicit B(const A& a)
-  {
-    std::cout << "a,hh"<< std::endl;
-    a_=a;
-  }
-
-  ~B() {}
-private:
-  A a_;
-};
-
-
-class C : public B
-{
-public:
-  C():B( A({2,"HH"}) )
-  {
-     std::cout << "init C" << std::endl;
-  }
-};
+struct S {
+ long long a;
+ long long b;
+}s;
 
 int main()
 {
-  C c; 
-  const int &b = 2 ;
-  std::cout<<"0x" <<std::hex<<22222435252  << std::endl;
-  return 0;
+  std::thread th1([&] {
+      for(int i=0; i<10000000; i++){
+        s.a++;
+        std::cout<<"a:"<<s.a<<std::endl;
+      }
+    }
+  );
+
+  std::thread th2([&] {
+     for(int i=0; i<10000000; i++){
+        s.b++;
+        std::cout<<"b:"<<s.b<<std::endl;
+     }
+    }
+  );
+
+  th1.join();
+  th2.join();
 }

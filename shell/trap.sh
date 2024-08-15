@@ -10,4 +10,13 @@ trap cleanup SIGINT
 echo "Running... Press Ctrl+C to interrupt."
 
 # 模拟一个长时间运行的操作
-sleep 10
+sleep 1
+echo "1"
+sleep 1
+echo 2
+sleep 1
+echo 3
+sleep 1
+echo 4
+sleep 1
+echo 5
