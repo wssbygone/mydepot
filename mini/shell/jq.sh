@@ -6,8 +6,8 @@ json_data='{
         "src_path": "src/neta_ep32",
         "target": ["parameters_post.json", "zzz"]
     },
-    "aaa/xx":"bbb",
-    "aa":["cc","zz"]
+    "aaa\\xx":"bbb",
+    "./aa":["cc","zz"]
 }'
 
 # 通过管道将JSON数据传递给jq，并解析所有的键和值
@@ -17,8 +17,8 @@ keys_values=$(echo "$json_data" | jq -r 'to_entries | .[] | "\(.key) \(.value)"'
 while IFS= read -r line; do
     key=$(echo "$line" | awk '{print $1}')
     value=$(echo "$line" | awk '{print $2}')
-    if [ "$key" == "aa" ];then
-        echo $json_data | jq -r ".aa | map(@json)[]"
-    fi
-
+ #   if [ "$key" == "aa" ];then
+ #       echo $json_data | jq -r ".aa | map(@json)[]"
+ #   fi
+    echo "$key:$value"
 done <<< "$keys_values"
