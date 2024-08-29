@@ -1,0 +1,712 @@
+"""
+import logging
+import hashlib
+import pickle
+import json
+import sys, time
+
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s %(message)s',
+                    datefmt='[%Y-%m-%d %H:%M:%S] %p')
+logging.debug('this message should go to the log file')
+logging.info('so should this')
+logging.warning('And this,too')
+
+m = hashlib.md5()
+m.update('hello卧槽'.encode(encoding=('utf-8')))
+print(m.hexdigest())
+m.update(b'kitty')
+res = m.hexdigest()
+print(res, type(res), len(res))  # =m.update(b'hello卧槽kitty')
+
+x = hashlib.md5()
+x.update('hello卧槽kitty'.encode(encoding=('utf-8')))
+res = x.hexdigest()
+print(res, type(res), len(res))
+
+username = input('username : ')
+passwd = input('password : ')
+md5obj = hashlib.md5(username.encode('utf-8'))
+md5obj.update(passwd.encode('utf-8'))
+print(md5obj.hexdigest())
+
+y = hashlib.md5()
+y.update("wss123456".encode('utf-8'))
+print(y.hexdigest())
+
+dic = {1: (12, 3, 4), ('a', 'b'): 4}
+print(dic)
+pic_dic = pickle.dumps(dic)
+print(pic_dic)  # bytes类型
+new_dic = pickle.loads(pic_dic)
+print(new_dic)
+
+
+dic = {1:2,3:4}
+str_dic = json.dumps(dic)
+print(str_dic)
+
+new_dic = json.loads(str_dic)
+print(new_dic) 
+
+dic = {'abc': (1, 2, 3)}
+lst = ['aaa', 123, 'bbb', 12.456]
+with open('json_demo', 'w') as f:
+    json.dump(lst, f)
+
+with open('json_demo') as f:
+    ret = json.load(f)  # 会报错
+    print(ret)
+
+data = {'username': ['李华', '二愣子'], 'sex': 'male', 'age': 16,'per':"呵呵"}
+print(data)
+json_dic2 = json.dumps(data, sort_keys=False, indent=4, ensure_ascii=False)
+print(json_dic2)
+
+
+lis = ['zouzou', 'jack', 'bob']
+name = {'001': 'hello'}
+try:
+    print(lis[3])
+    print(name['002'])
+
+except Exception as e:
+    print('没有这个key：', e)
+
+finally:
+    print('不管有没有错都执行')
+"""
+"""
+try:
+    num = int(input('>>>'))
+except Exception:
+    print('在出现了异常之后做点儿什么,再让它抛异常')
+    print("挂了")
+    #raise  # 原封不动的抛出try语句中出现的异常
+"""
+"""
+age_of_oldboy = 56
+count = 0
+while count < 3:
+    guess_age = int(input('guess age:'))
+    if guess_age == age_of_oldboy:
+        print("yes, you got it. ")
+        break
+    elif guess_age > age_of_oldboy:
+        print("think smaller...")
+    else:
+        print("thing bigger...")
+    count = count + 1
+else:
+    print("you have tried too many times...")
+"""
+"""
+count = 1
+while count <= 3:
+    print(count)
+    count = count + 1
+    if count == 5:
+        break  # 彻底停止循环. 不会执行后面的else
+else:  # while条件不成立的时候执行
+    print("这里是else: count=%d" % count)
+"""
+"""
+name = input('name:')
+age = input('age:')
+job = input('job:')
+salary = input('salary:')
+info = '''
+----------------info fo {0}------------
+name:{0}
+age:{1}
+job:{2}
+salary:{3}
+'''.format(name, age, job, salary)
+print(info)
+"""
+"""
+age_of_oldboy = 56
+for i in range(3):
+    guess_age = int(input('guess age:'))
+    if guess_age == age_of_oldboy:
+        print("yes, you got it. ")
+        break
+    elif guess_age > age_of_oldboy:
+        print("think smaller...")
+    else:
+        print("thing bigger...")
+else:
+    print("you have tried too many times...")
+"""
+"""
+names = ["aa", 'bb', ['zou', 'xx'], 'cc', 'dd', 'ee', '77']
+print(names)
+print(names[0:-1:2])
+print(names[::2])
+"""
+"""
+lst1 = ["金毛狮王", "紫衫龙王", ]
+lst2 = lst1  # 列表,进行赋值操作. 实际上是引用内存地址的赋值. 内存中此时只有一个列表. 两个变量指向一个列表
+lst2.append("白眉鹰王")  # 对其中的一个进行操作. 两个都跟着变
+print(lst1, id(lst1))
+print(lst2, id(lst2))
+
+
+lst1 = ["超人", "七龙珠", ["金城武", "渣渣辉"]]
+lst2 = lst1.copy()  # 拷贝. 浅拷贝 拷贝第一层
+lst1[2].append("大哥")
+print(lst1, id(lst1))
+print(lst2, id(lst2))
+
+a=None
+b=None
+if a==b:
+    print("a=b")
+else:
+    print("a!=b")
+"""
+"""
+name = 'my name is zou zou'
+print(name.capitalize())  # 首字母大写
+print(name.count('z'))  # 统计z的个数
+print(name.center(50, '-'))  # 一共打印50个字符，不够了用-补上，把name的内容放中间
+print(name.endswith('ou'))  # 判断已什么结尾，正确返回 True，错误返回False
+print(name.find('i'))
+print(name[name.find('i'):])
+print('123'.isdigit())  # 是整数返回True，要引号引起来
+print('set'.isidentifier())  # 判断是不是一个合法的变量名
+
+name = 'my name is zou zou'
+print('='.join(['1', '2', '3']))  # 1=2=3
+print(''.join(['1', '2', '3']))  # 123
+print(name.ljust(50, "*"))  # 长度为50，不够的在右边用*补
+print(name.rjust(50, "*"))  # 长度为50，不够的在左边用* 补
+print('ZOU'.lower())  # 将大写变小写
+print('zou'.upper())  # 将小写变大写
+print('          \nAlex'.lstrip())  # 去掉左边的空格
+print('    \nAlex\n'.rstrip())  # 去掉右边的空格
+print('\nAlex\n'.strip())  # 去掉两边的空格
+str = 'alex li'.replace('l', 'L', 2)
+print(str)  # 替换
+print(name.center(50, "*"))
+print('1+2+3+4'.split('+'))  # 按任意字符将字符串转换成列表
+print(name.title())  # 将每个单词的首字母大写
+
+names = ["aa", 'bb', ['zou', 'xx'], 'cc', 'dd', 'ee', '77']
+print(names[0:-1:2])
+print(names[::2])
+
+info = {'stu1101': 'marry', 'stu1102': 'jack', 'stu1103': 'zou'}
+for i in info:  # 直接循环字典.拿到的是key
+    #    print(i)  #只打印key值
+    print(i,info[i])
+
+"""
+"""
+
+dic = {"及时雨": "宋江", "易大师": "剑圣", "维恩": "暗影猎手"}
+print(dic.items())  # 拿到键值对
+# 遍历dict
+for k, v in dic.items():
+    # k,v=item() 解包
+    print(k, v)
+
+
+a, b = 5, 8
+
+# 改成用函数写
+def calc(x, y):
+    res = x ** y
+    return res  # 返回函数执行结果
+
+"""
+"""
+def test1():
+    print('in the test1')
+
+def test2():
+    print('in the test2')
+    return 0
+
+def test3():
+    print('in the test3')
+    return 1, 'hello', {'name': 'zouzou'}
+    return test2
+
+x = test1()
+y = test2()
+z = test3()
+print(x)
+print(y)
+print(z)
+"""
+"""
+def test(x, *args):
+    print(x)
+    print(args)  # 打印的是一个元组
+
+
+#test(2, 4, 6, 8)
+test(*[6, 8, 9, 45, 5])  # args=tuple[6,8,9,45,5]
+
+a = 1
+def fun_1():
+    a = 2
+
+    def fun_2():
+
+        def fun_3():
+            nonlocal a
+            a = 4
+            print(a)
+
+        print(a)
+        fun_3()
+        print(a)
+
+    print(a)
+    print("----")
+    fun_2()
+    print("++++")
+    print(a)
+
+print(a)
+fun_1()
+print(a)
+"""
+"""
+def func():
+    name = "zou"  # 常驻内存 .防止其他程序改变这个变量
+
+    def inner():
+        print(name)
+    
+    print(inner.__closure__)  # 查看函数是否是闭包
+
+    return inner
+ret = func()
+ret()  # 执行的是inner()
+"""
+"""
+from collections.abc import Iterable 
+from collections.abc import Iterator 
+
+lst = [1, 2, 3]
+
+print(isinstance(lst, Iterable))
+print(isinstance(lst, Iterator))
+print(isinstance(lst, list))
+
+def func():
+    print("我是周杰伦")
+    yield "昆凌"
+    print("我是王力宏")
+    yield "李云迪???"
+    print("我是笛卡尔积")
+    yield "笛卡尔积是谁"
+    print("你好啊")
+
+
+g = func()
+print(g)
+print(g.__next__())
+print(g.__next__())
+
+a=(i*2 for i in range(5))
+for i in a:
+    print(i)
+"""
+"""
+import time
+def consumer(name):
+    print("%s 准备吃包子啦!" % name)
+    while True:
+        baozi = yield  # 停止，下面的代码先不执行
+        print("包子[%s]来了,被[%s]吃了!" % (baozi, name))
+
+def producer(name):
+    c = consumer('A')
+    c2 = consumer('B')
+    c.__next__()
+    c2.__next__()
+    print("老子开始准备做包子啦!")
+    for i in range(5):
+        # time.sleep(1)
+        print("做了2个包子!")
+        c.send(i)  # 跳到yield，执行下面的代码
+        c2.send(i)
+
+producer("zou")
+"""
+"""
+def func():
+    # print("大碴粥")
+    a = yield "11"
+    print(a)
+    print("狗不理")
+    b = yield "22"
+    print(b)
+    print("大麻花")
+    yield "33"
+
+g = func()
+print(g.__next__())
+print(g.send(1))
+print(g.send(2))
+"""
+'''
+def eat():
+    print("我吃什么啊")
+    a=yield "馒头"
+    print("a=", a)
+    b = yield "大饼"
+    print("b=", b)
+    c = yield "韭菜盒子"
+    print("c=", c)
+    yield "GAME OVER"
+
+gen = eat()  # 获取⽣成器
+ret1 = gen.__next__()
+print("["+ret1+"]")
+ret2 = gen.send("胡辣汤")
+print(ret2)
+
+ret3 = gen.send("狗粮")
+print(ret3)
+ret4 = gen.send("猫粮")
+print(ret4)
+
+lst = [ i for i in range(1, 15)]
+print(lst)
+
+names = [['Tom', 'Billy', 'Jefferson', 'Andrew', 'Wesley', 'Steven', 'Joe'],
+     ['Alice', 'Jill', 'Ana', 'Wendy', 'Jennifer', 'Sherry', 'Eva']]
+lst = [name for first in names for name in first if name.count("e") == 2]
+print(lst)
+
+
+lst1=[m + n for m in 'ABC' for n in 'XYZ']
+print(lst1)
+
+lst1 = ["aaa", "bb", "cc", "dd"]
+lst2 = ["AA", "BB", "CC", "DD"]
+# {"aa":"AA", "bb":"BB","cc":"CC","dd":"DD"}
+dic = {lst1[i]: lst2[i] for i in range(len(lst2))}
+print(dic)
+
+print(chr(98))  # 将数字转换成ascii码的字符
+print(ord('a'))  # 将字符转换为ascii码的数字
+a = {}
+print(dir(a))  # dir查看有什么可以使用的方法
+
+a = {6: 2, 8: 0, 1: 4, -5: 6, 99: 11, 4: 22}
+print(sorted(a.items()))  # 按key排序
+print(sorted(a.items(), key=lambda x: x[1]))  # x是一个键值对元组  按value排序
+print(dir(a))
+
+a = [1, 2, 3, 4, 5]
+b = ['a', 'b', 'c', 'd']
+s = zip(a, b)
+for i in s:
+    print(i)
+'''
+'''
+import os
+filePath = "CJMDXTtest"
+
+def read(filePath, n):
+    it = os.listdir(filePath)  # 打开文件夹
+    for el in it:
+        #  拿到路径
+        fp = os.path.join(filePath, el)  # 获取到绝对路径
+        if os.path.isdir(fp):  # 判断是否是文件夹
+            print("\t" * n, el)
+            read(fp, n + 1)  # 又是文件夹. 继续读取内部的内容 递归入口
+        else:
+            print("\t" * n, el)  # 递归出口
+read(filePath, 0)
+
+def calc(*numbers):
+    sum = 0
+    for n in numbers:
+        sum = sum + n * n
+    return sum
+print(calc(2, 4, 2))
+'''
+'''
+def move(n, a, b, c):
+    if n > 1:
+        move(n - 1, a, c, b)
+    print(a, '-->', c)
+    if n > 1:
+        move(n - 1, b, a, c)
+move(3, 'A', 'B', 'C')
+'''
+'''
+# class People():#经典类
+class People(object):  # 新式类
+    def __init__(self, name, age):
+        self.Name = name
+        self.Age = age
+
+    def eat(self):
+        print('%s is eating...' % self.Name)
+
+    def talk(self):
+        print('%s is talking...' % self.Name)
+
+    def sleep(self):
+        print('%s is sleeping...' % self.Name)
+
+class Man(People):  # 继承了People类
+    def __init__(self, name, age, money):  # 必须将参数都写上
+        # People.__init__(self,name,age)  # name和age用People的实例变量，经典类写法
+
+        super().__init__(name, age)  # name和age用People的实例变量，新式类写法
+
+        self.money = money
+        print('%s have %s' % (self.Name, self.money))
+
+def sleep(self):  # 重构People类，有相同的方法时调用自己的
+    People.sleep(self)  # 调用了People的方法
+    print('man is sleep...')
+
+class Woman(People):
+    def birth(self):
+        print('woman is birth...')
+
+m1 = Man('jack', 24, 88888)
+m1.eat()
+m1.sleep()
+
+m2 = Woman('bob', 22)
+m2.birth()
+m2.sleep()
+'''
+
+'''
+class Animal(object):
+
+    def __init__(self, name):
+        self.name = name
+
+    def talk(self):
+        pass
+
+    @staticmethod  # 静态方法
+    def animal_talk(obj):  # 静态方法下这里不需要self
+        obj.talk()
+
+
+class Cat(Animal):
+
+    def talk(self):
+        print('Meow!')
+
+
+class Dog(Animal):
+
+    def talk(self):
+        print('Woof! Woof!')
+
+
+d = Dog("杰克")
+c = Cat("叶良辰")
+Animal.animal_talk(
+    c
+)  # 调用了Animal下的    animal_talk方法，将c传给，animal_talk又调用了Dog下的talk（），相当于c.talk（）
+Animal.animal_talk(d)
+'''
+'''
+class Parent():
+
+    def __func(self):
+        print("in parent func")
+
+    def __init__(self):
+        self.__func() #遇到__xx时会在前面加上_类名__xx,所以此行等价于self._Paernt__func()
+
+class Son(Parent):
+    def __func(self):
+        print("in son func")
+    def __init__(self):
+        self.__func()
+
+s = Son()
+'''
+'''
+class B:
+    __money = 1000
+
+class A(B):
+    name = "zou"
+    __age = 18
+
+    def func(self):
+        print(self.__age)
+        print(A.__age)
+        print("func...")
+
+a1 = A()
+#print(a1.__age)  # 会报错，实例化对象不能访问静态字段
+#print(A.__age)  # 会报错，类名不能访问静态变量
+a1.func()  # 对于私有静态字段来说,只能在本类中内部访问,类的外部,派生类均不可访问
+print(A._A__age)
+print(A.__dict__)
+'''
+'''
+class B():
+    __money = 1000
+
+    def __f1(self):
+        print("B")
+
+class A(B):
+
+    def __func(self):
+        print("A")
+
+    def func1(self):
+        self.__func()
+        A.__func(self)
+
+    def func2(self):
+        self.__f1()
+
+a1 = A()
+# a1.__func()#会报错，类外部不能访问私有方法
+a1.func1()  # 类的内部可以访问
+#a1.func2()  # 会报错，基类的私有函数在类的派生类不能访问
+'''
+'''
+class Foo(object):
+    def __init__(self,name):
+        self.name = name
+
+    def func(self):
+        print("%s:基本方法" % self.name)
+
+    @property # pro = property(pro)
+    def pro(self):
+        print("%s:属性方法"%self.name)
+
+
+f1 = Foo("elephant111")
+f1.func()
+# 调用
+f1.pro
+'''
+
+'''
+import random
+print(random.random())  # 随机生成[0,1)的小数
+print(random.uniform(1, 3))  # 随机生成（1，3）的小数
+print(random.randint(1, 4))  # 随机生成[1,4]的整数
+print(random.randrange(1, 4))  # 随机生成[1,4)的整数
+print(random.randrange(1, 9, 2))  # 随机生成[1,9)的整数,步长为2
+print(random.choice('hello'))  # 从字符串里随机取一个字符
+print(random.choice(["hello", "boy", "gril"]))  # 从列表里随机取一个值
+print(random.sample('abcde', 2))  # 从序列中随机取两个
+
+for i in range(5):
+    num = ''.join(random.sample('123456asdfg', 5))
+    print(num)
+'''
+'''
+import re
+res = re.search('f[a-z]+a', 'liu321fuJiafujia123')
+print(res.group())
+
+res = re.search('[a-z]+', 'liuFujia', flags=re.I) 
+print(res.group())
+
+res = re.search('#.+#', '123#hello#j58')
+print(res.group())
+
+res = re.search('aal?', 'aaalexaaa')   # 匹配？前的l一次或0次
+print(res.group())
+
+res = re.search('[0-9]{3}', 'as1def2rt3456gh')
+print(res.group())
+
+res = re.search('abc|ABC', 'ABCAabcCD')  # 先匹配左边的abc，第一个满足大写的就返回大写的
+print(res.group())
+
+res = re.search('(abc){2}', 'abcccabcabcjid')  # 匹配abc 两次
+print(res.group())
+
+res = re.search('\A[0-9]+[a-z]+\Z', '2658afgdfd')  # 匹配数字开头，字母结尾
+print(res.group())
+
+res = re.search('\A[0-9]+[a-z]\Z', '2658a')  # 匹配数字开头，一个字母结尾，字母大于一个会报错
+print(res.group())
+
+res = re.search('\d+', 'sd5ere65tere862')  # 匹配数字，只匹配一次
+print(res.group())
+
+res = re.search('\w+', '$sd5ere65t#ere862')  # 匹配非特殊字符一次
+print(res.group())
+
+res = re.findall('[0-9]{2,3}', 'as1def25rt3456gh')  # !!!匹配前一个字符n到m次
+print(res)
+
+res = re.split('[a-z]', '7sdr85fd8gf52')
+print(res)    # ['7', '', '', '85', '', '8', '', '52']
+
+res = re.split('[a-z]+', '7sdr85fd8gf52')
+print(res)    # ['7', '85', '8', '52']
+
+res = re.sub('[0-9]+', '|', '2sd36fd5er9')  # 替换，匹配所有的数字，替换为|
+print(res)  # |sd|fd|er|
+
+res = re.sub('[0-9]+', '|', '2sd36fd5er9', count=2)  # 替换，匹配前两次的数字，替换为|
+print(res)  # |sd|fd5er9
+'''
+
+'''
+import re
+re.findall('-0\.\d+|-[1-9]+(\.\d+)?', 'alex83egon20taibai40')
+ret = re.compile('-0\.\d+|-[1-9]\d+(\.\d+)?')
+res = ret.search('alex83egon-20taibai-40')
+print(res.group())  # 节省时间 : 只有在多次使用某一个相同的正则表达式的时候,这个compile才会帮助我们提高程序的效率
+'''
+
+'''
+import re
+res = re.split('[a-z]', '7sdr85fd8gf52')
+print(res)
+ret = re.split('\d+', 'abc83egon20bai40')
+print(ret)
+
+ret = re.findall('www.(baidu|csca).com', 'www.csca.com')
+print(ret)
+ret = re.findall('(www.(baidu|csca).com)', 'www.csca.com')
+print(ret)
+'''
+'''
+def list_to_dict(list, key_func):
+    d = {}
+    for item in list:
+        k = key_func(item)
+        v = item
+        list = d.get(k)
+        if list is None:
+            d[k] = [v]
+        else:
+            d[k].append(v)
+
+    return d
+
+if __name__ == '__main__':
+    list = [
+        {"name": "alice", "age": 100},
+        {"name": "middle", "age": 100},
+        {"name": "bob", "age": 200}
+    ]
+    # TODO(You): 请在此调用 list_to_dict 方法，将 list 转成dict
+    get_key = lambda item: item['age']
+    ret = list_to_dict(list, get_key)
+    print(ret)
+'''
+
+
