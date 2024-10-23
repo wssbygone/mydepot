@@ -1,7 +1,7 @@
 #!/bin/bash
 if ! command -v dot &> /dev/null; then
     echo "graphviz未安装,开始安装..."
-    sudo apt-get install graphviz
+    sudo apt-get install -y graphviz
     if [ $? -eq 0 ]; then
         echo "graphviz安装成功!"
     else

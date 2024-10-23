@@ -7,7 +7,7 @@ json_data='{
         "target": ["parameters_post.json", "zzz"]
     },
     "aaa\\xx":"bbb",
-    "./aa":["cc","zz"]
+    ".":["cc","zz"]
 }'
 
 # 通过管道将JSON数据传递给jq，并解析所有的键和值
