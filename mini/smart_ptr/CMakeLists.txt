@@ -3,19 +3,19 @@ project(example)
 
 set(CMAKE_CXX_STANDARD 17)
 
-SET(ENABLE_TEST ON)
+SET(ENABLE_TEST OFF)
 
 include_directories(
-  ~/aiplorer/third_party/linux94/glog_0.3.5-rc.5/include
-  ~/aiplorer/third_party/linux94/gflags_2.2.2/include
-  ~/aiplorer/third_party/linux94/gtest_1.8.1/include
+  ~/workspace/aiplorer/third_party/linux/glog_0.3.5/include
+  ~/workspace/aiplorer/third_party/linux/gflags_2.2.2/include
+  ~/workspace/aiplorer/third_party/linux/gtest_1.8.1/include
   ./
 )
 
 LINK_DIRECTORIES(
-  ~/aiplorer/third_party/linux94/glog_0.3.5-rc.5/lib
-  ~/aiplorer/third_party/linux94/gflags_2.2.2/lib
-  ~/aiplorer/third_party/linux94/gtest_1.8.1/lib
+  ~/workspace/aiplorer/third_party/linux/glog_0.3.5/lib
+  ~/workspace/aiplorer/third_party/linux/gflags_2.2.2/lib
+  ~/workspace/aiplorer/third_party/linux/gtest_1.8.1/lib
 )
 
 aux_source_directory(src SRC)
