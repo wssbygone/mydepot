@@ -1,0 +1,11 @@
+[package]
+name = "little_complex"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+utf8_slice = "1.0.0"
+num = "0.4.0"
+
+[profile.dev]
+debug = true

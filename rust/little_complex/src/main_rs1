@@ -1,0 +1,77 @@
+use utf8_slice;
+
+fn main() {
+
+    let arr: [char; 3] = ['中', '国', '人'];
+    let slice = &arr[..2];
+    println!("[{:?}]",slice);
+
+    let s = "The 🚀中国 goes to the 🌑!";
+    let rocket = utf8_slice::slice(s, 4, 12);
+    println!("[{}]",rocket);  // 结果是 "🚀"
+
+  let csv_line = "name,age,country\nAlice,25,USA";
+  let header = csv_line.lines().next().unwrap();
+  /*
+  let mut lines = csv_line.lines(); // 获取迭代器
+  let first_line = lines.next();    // 取第一个元素: Some("name,age,country")
+  let header = first_line.unwrap(); // 解包得到 "name,age,country"
+  */
+  println!("{}",header);
+  let fields: Vec<_> = header.split(',').map(|s| s.trim()).collect();
+  assert_eq!(fields, vec!["name", "age", "country"]);    
+
+
+    let mut string_replace =  String::from("I like rust. Learning rust is my favorite!") ;
+    string_replace.replace_range(7..11, "RUST");
+    // dbg!(string_replace);
+
+
+    let mut string_pop = String::from("rust pop 中文!");
+    let p1 = string_pop.pop();
+    let p2 = string_pop.pop();
+    dbg!(p1);
+    dbg!(p2);
+    dbg!(string_pop);
+
+
+    let mut string_remove = String::from("测试remove方法");
+    println!(
+        "string_remove 占 {} 个字节",
+        std::mem::size_of_val(&string_remove)
+    );
+    // 删除第一个汉字
+    string_remove.remove(0);
+    // 下面代码会发生错误
+    // string_remove.remove(1);
+    // 直接删除第二个汉字
+    // string_remove.remove(3);
+    dbg!(string_remove);
+
+
+    let s1 = String::from("hello,");
+    let s2 = String::from("world!");
+    // 在下句中，s1的所有权被转移走了，因此后面不能再使用s1
+    let s3 = s1.clone() + &s2;
+    assert_eq!(s3,"hello,world!");
+    // 下面的语句如果去掉注释，就会报错
+    println!("~~{}~~",s1);
+
+    let s1 = "hello";
+    let s2 = String::from("rust");
+    let s = format!("{} {}!", s1, s2);
+    println!("{}", s);
+    println!("{} {}",s1,s2);
+
+    println!("{}", "hello \\x52\\x75\\x73\\x74");
+    let raw_str = r"Escapes don't work here: \x3F \u{211D}";
+    println!("{}", raw_str);
+    // 如果字符串包含双引号，可以在开头和结尾加 #
+    let quotes = r#"And then I said: "There is no escape!""#;
+    println!("{}", quotes);
+    // 如果字符串中包含 # 号，可以在开头和结尾加多个 # 号，最多加255个，只需保证与字符串中连续 # 号的个数不超过开头和结尾的 # 号的个数即可
+    let longer_delimiter = r###"A string with "# in it. And even "##!"###;
+    println!("{}", longer_delimiter);
+
+
+}
