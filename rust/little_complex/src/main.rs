@@ -1,5 +1,52 @@
-// use num::complex::Complex;
-// use std::convert::TryInto;
+
+struct Cacher<T,E>
+where
+    T: Fn(E) -> E,
+    E: Copy
+{
+    query: T,
+    value: Option<E>,
+}
+
+impl<T,E> Cacher<T,E>
+where
+    T: Fn(E) -> E,
+    E: Copy
+{
+    fn new(query: T) -> Cacher<T,E> {
+        Cacher {
+            query,
+            value: None,
+        }
+    }
+
+    fn value(&mut self, arg: E) -> E {
+        match self.value {
+            Some(v) => v,
+            None => {
+                let v = (self.query)(arg);
+                self.value = Some(v);
+                v
+            }
+        }
+    }
+}
+fn main() {
+
+}
+
+#[test]
+fn call_with_different_values() {
+    let mut c = Cacher::new(|a| a);
+
+    let v1 = c.value(1);
+    let v2 = c.value(2);
+
+
+    assert_eq!(v2, 2);
+}
+
+/*
 #![allow(unused)]
 
 use std::env;
@@ -7,6 +54,7 @@ fn main() {
     let args: Vec<String> = env::args().collect();
     dbg!(args);
 }
+*/
 
 /*
 fn main() {
@@ -642,6 +690,8 @@ fn type_of<T>(_: &T) -> String {
 */
 
 /*
+use num::complex::Complex;
+use std::convert::TryInto;
     let x: i8 = 127;
     let mut _y: i16 = 5;
     _y += x as i16;
