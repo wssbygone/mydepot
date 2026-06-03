@@ -1,0 +1,6 @@
+/home/wss/mydepot/rust/little_complex/target/debug/deps/libnum_rational-2511b4b8521279ec.rmeta: /home/wss/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/num-rational-0.4.2/src/lib.rs /home/wss/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/num-rational-0.4.2/src/pow.rs
+
+/home/wss/mydepot/rust/little_complex/target/debug/deps/num_rational-2511b4b8521279ec.d: /home/wss/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/num-rational-0.4.2/src/lib.rs /home/wss/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/num-rational-0.4.2/src/pow.rs
+
+/home/wss/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/num-rational-0.4.2/src/lib.rs:
+/home/wss/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/num-rational-0.4.2/src/pow.rs:

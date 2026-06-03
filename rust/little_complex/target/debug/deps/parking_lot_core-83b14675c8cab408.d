@@ -1,0 +1,11 @@
+/home/wss/mydepot/rust/little_complex/target/debug/deps/parking_lot_core-83b14675c8cab408.d: /home/wss/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/parking_lot_core-0.9.12/src/lib.rs /home/wss/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/parking_lot_core-0.9.12/src/parking_lot.rs /home/wss/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/parking_lot_core-0.9.12/src/spinwait.rs /home/wss/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/parking_lot_core-0.9.12/src/thread_parker/mod.rs /home/wss/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/parking_lot_core-0.9.12/src/util.rs /home/wss/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/parking_lot_core-0.9.12/src/word_lock.rs /home/wss/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/parking_lot_core-0.9.12/src/thread_parker/linux.rs
+
+/home/wss/mydepot/rust/little_complex/target/debug/deps/libparking_lot_core-83b14675c8cab408.rmeta: /home/wss/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/parking_lot_core-0.9.12/src/lib.rs /home/wss/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/parking_lot_core-0.9.12/src/parking_lot.rs /home/wss/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/parking_lot_core-0.9.12/src/spinwait.rs /home/wss/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/parking_lot_core-0.9.12/src/thread_parker/mod.rs /home/wss/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/parking_lot_core-0.9.12/src/util.rs /home/wss/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/parking_lot_core-0.9.12/src/word_lock.rs /home/wss/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/parking_lot_core-0.9.12/src/thread_parker/linux.rs
+
+/home/wss/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/parking_lot_core-0.9.12/src/lib.rs:
+/home/wss/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/parking_lot_core-0.9.12/src/parking_lot.rs:
+/home/wss/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/parking_lot_core-0.9.12/src/spinwait.rs:
+/home/wss/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/parking_lot_core-0.9.12/src/thread_parker/mod.rs:
+/home/wss/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/parking_lot_core-0.9.12/src/util.rs:
+/home/wss/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/parking_lot_core-0.9.12/src/word_lock.rs:
+/home/wss/.cargo/registry/src/rsproxy.cn-e3de039b2554c837/parking_lot_core-0.9.12/src/thread_parker/linux.rs:
